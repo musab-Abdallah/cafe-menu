@@ -5,56 +5,72 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "core-js": "^3.8.3",
+    "axios": "^1.7.2",
+    "core-js": "^3.37.1",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
+    "@babel/core": "^7.24.7",
     "@babel/eslint-parser": "^7.12.16",
+    "@babel/preset-env": "^7.24.7",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
-    "eslint": "^7.32.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-vue": "^8.0.3",
+    "eslint-plugin-vue": "^9.26.0",
+    "eslint-webpack-plugin": "^4.2.0",
     "lint-staged": "^11.1.2",
     "prettier": "^2.4.1",
     "stylus": "^0.55.0",
     "stylus-loader": "^6.1.0"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended",
-      "plugin:prettier/recommended"
-    ],
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead",
-    "not ie 11"
+  "extends": [
+    "airbnb",
+    "plugin:prettier/recommended"
   ],
-  "gitHooks": {
-    "pre-commit": "lint-staged"
+  "env": {
+    "jest": true,
+    "browser": true
   },
-  "lint-staged": {
-    "*.{js,jsx,vue}": "vue-cli-service lint"
+  "rules": {
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
+    "no-confusing-arrow": "off",
+    "linebreak-style": "off",
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "ignore"
+      }
+    ],
+    "no-plusplus": "off"
+  },
+  "parser": "babel-eslint",
+  "plugins": [
+    "vue"
+  ],
+  "globals": {
+    "browser": false,
+    "$": false,
+    "before": false,
+    "document": false
   }
 }
